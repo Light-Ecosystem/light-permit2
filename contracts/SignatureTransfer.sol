@@ -37,9 +37,7 @@ contract SignatureTransfer is ISignatureTransfer, EIP712 {
         string calldata witnessTypeString,
         bytes calldata signature
     ) external {
-        _permitTransferFrom(
-            permit, transferDetails, owner, permit.hashWithWitness(witness, witnessTypeString), signature
-        );
+        _permitTransferFrom(permit, transferDetails, owner, permit.hashWithWitness(witness, witnessTypeString), signature);
     }
 
     /// @notice Transfers a token using a signed permit message.
@@ -86,9 +84,9 @@ contract SignatureTransfer is ISignatureTransfer, EIP712 {
         string calldata witnessTypeString,
         bytes calldata signature
     ) external {
-        _permitTransferFrom(
-            permit, transferDetails, owner, permit.hashWithWitness(witness, witnessTypeString), signature
-        );
+        /// avoid stack too deep
+        bytes32 dataHash = permit.hashWithWitness(witness, witnessTypeString);
+        _permitTransferFrom(permit, transferDetails, owner, dataHash, signature);
     }
 
     /// @notice Transfers tokens using a signed permit messages
