@@ -22,10 +22,6 @@ The `SignatureTransfer` contract handles all signature-based transfers, meaning 
 
 The `AllowanceTransfer` contract handles setting allowances on tokens, giving permissions to spenders on a specified amount for a specified duration of time. Any transfers that then happen through the `AllowanceTransfer` contract will only succeed if the proper permissions have been set.
 
-## Integrating with Permit2
-
-*Before integrating contracts can request users’ tokens through* *`Permit2`, users must approve the* *`Permit2`* *contract through the specific token contract. To see a detailed technical reference, visit the Uniswap* *[documentation site](https://docs.uniswap.org/contracts/permit2/overview).*
-
 ### Note on viaIR compilation
 
 Permit2 uses viaIR compilation, so importing and deploying it in an integration for tests will require the integrating repository to also use viaIR compilation. This is often quite slow, so can be avoided using the precompiled `DeployPermit2` utility:
@@ -42,7 +38,7 @@ contract MyTest is DeployPermit2 {
 }
 ```
 
-## Bug Bounty
+## Setup & Deploy
 
 ### Setup
 
@@ -79,5 +75,5 @@ If you have any questions about this project, or wish to engage with us:
 - [Discord](https://discord.com/invite/hope-ecosystem)
 
 # License
-
-This project is licensed under the [[AGPL-3.0](https://github.com/Light-Ecosystem/light-dao/blob/dev/LICENSE)](LICENSE) license.
+AGPL-3.0
+This project is licensed under the [AGPL-3.0](LICENSE) license.
